@@ -4,7 +4,7 @@ Welcome to my teaching portfolio for CS education. This page documents coursewor
 
 ---
 
-## Unit 1: Programming Assessment & Walkthrough
+## Peer-graded Assignment: Show What You Know: Explain Your Program
 
 ### Snap! Spirograph Demonstration
 - **Project:** Colorful Spirograph in Motion
