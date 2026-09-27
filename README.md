@@ -1,6 +1,6 @@
-# Computer Science Teaching Portfolio
+# EDS Class Computer Science Teaching Portfolio
 
-Welcome to my teaching portfolio for CS education. This page documents coursework, lesson designs, and programming walkthroughs.
+Welcome to my teaching portfolio for CS education. The following repo will include tasks and assignments that will document my learning process of teaching CS!
 
 ---
 
