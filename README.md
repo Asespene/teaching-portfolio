@@ -4,7 +4,7 @@ Welcome to my teaching portfolio for CS education. The following repo will inclu
 
 ---
 
-## Peer-graded Assignment: Animal Parade (Scratch Act 1) — Code Explanation
+## Peer-graded Assignment: Animal Parade (Scratch Act 1) - Code Explanation
 
 ### Loops & Repetition: Kangaroo, Grasshopper, and Bee
 - **Project:** Loops: Animal Parade (UCSD Version)
