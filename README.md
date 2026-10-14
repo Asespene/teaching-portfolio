@@ -60,3 +60,21 @@ This video demonstration documents how nested iteration models multi-level geome
   - **Outer Loop (`repeat 8`):** Handles the eight vertices of the polygon by rotating the mouse by $45^\circ$ ($360^\circ / 8 = 45^\circ$), displaying a `"Squeak!"` speech bubble, and pausing before beginning each edge.
   - **Inner Nested Loop (`repeat 4`):** Subdivides each side of the octagon into four discrete movements of 20 steps with 0.5-second pauses, producing an 80-step edge length before yielding control back to the outer rotation block.
 - **If I were to change this nested repeat like this** by reducing the outer `repeat` count from 8 to 6, updating the turn angle from $45^\circ$ to $60^\circ$ ($360^\circ / 6 = 60^\circ$), and modifying the inner `repeat` from 4 to 2, **the program would run differently** by drawing a smaller 6-sided regular hexagon with 40-step edges instead of a full octagon.
+
+---
+
+## Peer-graded Assignment: Document Understanding with a Video Explanation (Events)
+
+### Snap! Monkey and Falling Banana Demonstration
+- **Project:** Events & Inter-Sprite Communication: Monkey Banana Catch
+- **Tool:** Snap! (UC Berkeley)
+- **Video Walkthrough:** https://www.loom.com/share/6c069ef234ec40da9bccea6b55240c12
+
+#### Program & Concept Description
+This demonstration highlights how event-driven programming and message broadcasts coordinate decoupled sprites in an interactive environment:
+- **The purpose of my program is** to operate an interactive catching game where a user controls a monkey along the ground using keyboard events to catch falling bananas before they touch the grass.
+- **My code works by using events in this part to** orchestrate player control, collision sensing, and multi-sprite communication:
+  - **Key-Press Events:** The monkey uses `when [right arrow] key pressed` and `when [left arrow] key pressed` event listeners to displace horizontal position incrementally (+10 / -10 steps).
+  - **Conditional Event Triggers:** Predicate hat blocks (`when touching [banana]?` on the monkey and `when touching [green]?` on the banana) trigger immediately upon physical overlap without manual polling inside an imperative loop.
+  - **Broadcast Signaling:** Inter-sprite messaging via `broadcast [resetBanana]` and `broadcast [missedBanana]` synchronizes state changes—relocating the falling fruit to the top of the stage and signaling the monkey sprite to trigger reactive speech bubbles.
+- **If I were to change this event system like this** by altering the vertical velocity inside the banana's loop from `change y by -25` to `change y by -10` and modifying the tick delay, **the program would run differently** by reducing gravitational falling speed, lowering reaction difficulty, and increasing the window of time available for the monkey sprite to intercept the fruit.
