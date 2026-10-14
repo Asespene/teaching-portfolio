@@ -43,3 +43,20 @@ This video demonstration explains how repetition constructs consolidate repetiti
 - **The purpose of my program is** to animate a breakdancer performing a timed, continuous dance sequence across the stage using sequential costume swaps and coordinated delays.
 - **My code works by using repeats in this part to** iterate over the primary animation routine, toggling between `breakdancer1 c` and `breakdancer1 a` costumes with paired wait blocks to produce fluid visual movement without manual block duplication.
 - **If I were to change this repeat like this** by modifying the loop iteration count or adjusting the delay between costume switches, **the program would run differently** by either shortening the overall duration of the dance performance or altering the tempo and visual cadence of the sprite's movement on stage.
+
+---
+
+## Peer-graded Assignment: Document Understanding with a Video Explanation (Nested Repeats)
+
+### Snap! Nested Repeats Mouse Octagon Demonstration
+- **Project:** Nested Repeats: Mouse Octagon Drawing
+- **Tool:** Snap! (UC Berkeley)
+- **Video Walkthrough:** https://www.loom.com/share/ef8e2687bc59405aacfe05b9d8a21cf6
+
+#### Program & Concept Description
+This video demonstration documents how nested iteration models multi-level geometric procedures through nested control structures:
+- **The purpose of my program is** to guide a mouse sprite through an automated dialogue sequence and systematically trace an 8-sided regular octagon on the stage.
+- **My code works by using nested repeats in this part to** coordinate the outer turning geometry with the inner side translation:
+  - **Outer Loop (`repeat 8`):** Handles the eight vertices of the polygon by rotating the mouse by $45^\circ$ ($360^\circ / 8 = 45^\circ$), displaying a `"Squeak!"` speech bubble, and pausing before beginning each edge.
+  - **Inner Nested Loop (`repeat 4`):** Subdivides each side of the octagon into four discrete movements of 20 steps with 0.5-second pauses, producing an 80-step edge length before yielding control back to the outer rotation block.
+- **If I were to change this nested repeat like this** by reducing the outer `repeat` count from 8 to 6, updating the turn angle from $45^\circ$ to $60^\circ$ ($360^\circ / 6 = 60^\circ$), and modifying the inner `repeat` from 4 to 2, **the program would run differently** by drawing a smaller 6-sided regular hexagon with 40-step edges instead of a full octagon.
