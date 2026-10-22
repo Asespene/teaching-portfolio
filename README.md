@@ -78,3 +78,17 @@ This demonstration highlights how event-driven programming and message broadcast
   - **Conditional Event Triggers:** Predicate hat blocks (`when touching [banana]?` on the monkey and `when touching [green]?` on the banana) trigger immediately upon physical overlap without manual polling inside an imperative loop.
   - **Broadcast Signaling:** Inter-sprite messaging via `broadcast [resetBanana]` and `broadcast [missedBanana]` synchronizes state changes—relocating the falling fruit to the top of the stage and signaling the monkey sprite to trigger reactive speech bubbles.
 - **If I were to change this event system like this** by altering the vertical velocity inside the banana's loop from `change y by -25` to `change y by -10` and modifying the tick delay, **the program would run differently** by reducing gravitational falling speed, lowering reaction difficulty, and increasing the window of time available for the monkey sprite to intercept the fruit.
+
+## Peer-graded Assignment: Document Understanding with a Video Explanation (Variables)
+
+### Snap! Dynamic Regular Polygons Demonstration
+- **Project:** Dynamic Polygons: Triangle, Square, and Pentagon (WP_Variables)
+- **Tool:** Snap! (UC Berkeley)
+- **Video Walkthrough:** https://www.loom.com/share/4ceb74c294884120b00aa3b3b7278db4
+
+#### Program & Concept Description
+This video demonstration explains how variables store and update geometric state to dynamically generate multi-sided regular polygons:
+- **The purpose of my program is** to draw a sequence of regular polygons across the stage—specifically an orange triangle, a green square, and a blue pentagon—by using variables and loops to dynamically calculate each shape's geometry instead of hardcoding values.
+- **My code works by using variables in this part to** store the shape dimensions and update them as the program runs. The variable `num_sides` is initialized to 3 and `side_length` is set to 80. Inside the polygon loop, the sprite repeats `num_sides` times, moves `side_length` steps, and turns counterclockwise by `360 / num_sides` degrees. Between shapes, the script lifts the pen, shifts forward by `side_length + 30` or `50`, and uses `change [num_sides] by 1` so the exact same loop blocks automatically draw the next polygon in the sequence.
+- **...and it also uses events in this part to** trigger the program execution via the `when [green flag] clicked` hat block, which initializes the stage, resets the sprite's position, and starts the drawing pipeline from the beginning.
+- **The way variables in programming are different than in algebra is** that an algebraic variable represents an unknown or fixed value in a balanced equation (where expressions like $x = x + 1$ are mathematically invalid), whereas a programming variable is a named storage container in memory whose value can be repeatedly updated over time, as demonstrated by the `change [num_sides] by 1` block incrementing the stored value from 3 to 4, and then to 5.
