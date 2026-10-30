@@ -79,6 +79,8 @@ This demonstration highlights how event-driven programming and message broadcast
   - **Broadcast Signaling:** Inter-sprite messaging via `broadcast [resetBanana]` and `broadcast [missedBanana]` synchronizes state changes—relocating the falling fruit to the top of the stage and signaling the monkey sprite to trigger reactive speech bubbles.
 - **If I were to change this event system like this** by altering the vertical velocity inside the banana's loop from `change y by -25` to `change y by -10` and modifying the tick delay, **the program would run differently** by reducing gravitational falling speed, lowering reaction difficulty, and increasing the window of time available for the monkey sprite to intercept the fruit.
 
+---
+
 ## Peer-graded Assignment: Document Understanding with a Video Explanation (Variables)
 
 ### Snap! Dynamic Regular Polygons Demonstration
@@ -92,3 +94,18 @@ This video demonstration explains how variables store and update geometric state
 - **My code works by using variables in this part to** store the shape dimensions and update them as the program runs. The variable `num_sides` is initialized to 3 and `side_length` is set to 80. Inside the polygon loop, the sprite repeats `num_sides` times, moves `side_length` steps, and turns counterclockwise by `360 / num_sides` degrees. Between shapes, the script lifts the pen, shifts forward by `side_length + 30` or `50`, and uses `change [num_sides] by 1` so the exact same loop blocks automatically draw the next polygon in the sequence.
 - **...and it also uses events in this part to** trigger the program execution via the `when [green flag] clicked` hat block, which initializes the stage, resets the sprite's position, and starts the drawing pipeline from the beginning.
 - **The way variables in programming are different than in algebra is** that an algebraic variable represents an unknown or fixed value in a balanced equation (where expressions like $x = x + 1$ are mathematically invalid), whereas a programming variable is a named storage container in memory whose value can be repeatedly updated over time, as demonstrated by the `change [num_sides] by 1` block incrementing the stored value from 3 to 4, and then to 5.
+
+---
+
+## Peer-graded Assignment: Document Understanding with a Video Explanation (Conditional Loops)
+
+### Snap! Conditional Loops Soccer Ball Evasion Demonstration
+- **Project:** Conditional Loops: Random Evasion (WP_ConditionalLoops)
+- **Tool:** Snap! (UC Berkeley)
+- **Video Walkthrough:** https://www.loom.com/share/af88603c10874a1993b206c70d6dc83d
+
+#### Program & Concept Description
+This video demonstration explains how indefinite iteration structures real-time responsive behaviors when execution counts cannot be predetermined:
+- **The purpose of my program is** to create an interactive dodging game where a soccer ball sprite repeatedly glides to randomized coordinates on the stage until the player successfully intercepts it with their mouse pointer[cite: 1].
+- **My code works by using a conditional loop in this part to** continually drive the soccer ball's evasive motion using a `repeat until <touching (mouse-pointer v) ?>` control structure[cite: 1]. On every cycle through the loop, the program generates two pseudorandom values—`random number x` between -240 and 240, and `random number y` between -180 and 180—and moves the sprite to that position via `glide (0.1) secs to x: (random number x) y: (random number y)`[cite: 1]. At the end of each movement cycle, the predicate condition is re-evaluated, continuing the movement sequence until contact is detected[cite: 1].
+- **Conditional loops are different than regular repeats. In my program I can't use a repeat and have to use a conditional repeat because** the exact number of iterations needed to intercept the sprite depends entirely on user reaction speed, mouse tracking accuracy, and randomized coordinate selection[cite: 1]. A standard `repeat` block requires a fixed, finite iteration count specified ahead of runtime[cite: 1]. Because user interaction creates a non-deterministic stopping point, the program must evaluate the sensing condition dynamically at the boundary of each iteration and terminate only when that specific runtime state is reached[cite: 1].
