@@ -106,6 +106,23 @@ This video demonstration explains how variables store and update geometric state
 
 #### Program & Concept Description
 This video demonstration explains how indefinite iteration structures real-time responsive behaviors when execution counts cannot be predetermined:
-- **The purpose of my program is** to create an interactive dodging game where a soccer ball sprite repeatedly glides to randomized coordinates on the stage until the player successfully intercepts it with their mouse pointer[cite: 1].
-- **My code works by using a conditional loop in this part to** continually drive the soccer ball's evasive motion using a `repeat until <touching (mouse-pointer v) ?>` control structure[cite: 1]. On every cycle through the loop, the program generates two pseudorandom values—`random number x` between -240 and 240, and `random number y` between -180 and 180—and moves the sprite to that position via `glide (0.1) secs to x: (random number x) y: (random number y)`[cite: 1]. At the end of each movement cycle, the predicate condition is re-evaluated, continuing the movement sequence until contact is detected[cite: 1].
-- **Conditional loops are different than regular repeats. In my program I can't use a repeat and have to use a conditional repeat because** the exact number of iterations needed to intercept the sprite depends entirely on user reaction speed, mouse tracking accuracy, and randomized coordinate selection[cite: 1]. A standard `repeat` block requires a fixed, finite iteration count specified ahead of runtime[cite: 1]. Because user interaction creates a non-deterministic stopping point, the program must evaluate the sensing condition dynamically at the boundary of each iteration and terminate only when that specific runtime state is reached[cite: 1].
+- **The purpose of my program is** to create an interactive dodging game where a soccer ball sprite repeatedly glides to randomized coordinates on the stage until the player successfully intercepts it with their mouse pointer.
+- **My code works by using a conditional loop in this part to** continually drive the soccer ball's evasive motion using a `repeat until <touching (mouse-pointer v) ?>` control structure. On every cycle through the loop, the program generates two pseudorandom values—`random number x` between -240 and 240, and `random number y` between -180 and 180—and moves the sprite to that position via `glide (0.1) secs to x: (random number x) y: (random number y)`. At the end of each movement cycle, the predicate condition is re-evaluated, continuing the movement sequence until contact is detected.
+- **Conditional loops are different than regular repeats. In my program I can't use a repeat and have to use a conditional repeat because** the exact number of iterations needed to intercept the sprite depends entirely on user reaction speed, mouse tracking accuracy, and randomized coordinate selection. A standard `repeat` block requires a fixed, finite iteration count specified ahead of runtime. Because user interaction creates a non-deterministic stopping point, the program must evaluate the sensing condition dynamically at the boundary of each iteration and terminate only when that specific runtime state is reached.
+
+---
+
+## Peer-graded Assignment: Document Understanding with a Video Explanation (If-Else)
+
+### Snap! If-Else Target Ring Demonstration
+- **Project:** Conditional Execution: Target Scoring (WP_If_Else)
+- **Tool:** Snap! (UC Berkeley)
+- **Video Walkthrough:** https://www.loom.com/share/a73c9d7b16824e7b9d529ff833b88df1
+
+#### Program & Concept Description
+This video demonstration highlights how conditional branching and Boolean logic evaluate runtime game state and handle color-based collision scoring:
+- **The purpose of my program is** to create an interactive target game where a ball sprite glides to random positions across concentric colored rings for 30 seconds, updating the score based on the color touched when clicked, and providing personalized outcome feedback once time expires.
+- **My code works by using if and if-else statements in this part to** evaluate user interactions and overall game outcomes:
+  - **Click Collision Evaluation:** Attached to the ball sprite, `when I am clicked` runs three sequential `if` checks using the `touching [color] ?` reporter. If the ball touches red, it changes `score` by `-25` and says `"-25"` for 2 seconds. If touching yellow, it changes `score` by `+25` and says `"+25"`. If touching green, it changes `score` by `+50` and says `"+50"`.
+  - **Game-End Outcome Branching:** After the `repeat (10)` glide loop finishes in the green flag script, an `if-else` block checks `<(score) < 0>`. If true, the sprite executes the if-branch and says `"Better luck next time!"` for 2 seconds; if false, it executes the else-branch and says `"Good game!"` for 2 seconds. A subsequent `if` block checks `<(score) > 500>`, saying `"Wow! That's a lot of points!"` for 2 seconds only when that high-score condition is satisfied.
+- **If I were to change these if-else conditions like this** by placing the score evaluation blocks inside the `repeat (10)` loop instead of after it, **the program would run differently** by repeatedly triggering the end-game feedback speech bubbles after every single 3-second glide rather than waiting for all 30 seconds of gameplay to conclude.
