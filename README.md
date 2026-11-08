@@ -143,3 +143,20 @@ This video demonstration shows how compound Boolean expressions and nested condi
   - **Proximity Bounding Box:** The outer `if` condition verifies that the mouse is horizontally bounded within 60 pixels of `treasureX` (`(treasureX - 60) < mouse x` and `mouse x < (treasureX + 60)`) **and** vertically bounded within 60 pixels of `treasureY` (`(treasureY - 60) < mouse y` and `mouse y < (treasureY + 60)`). All four sub-conditions must be satisfied simultaneously for the block to trigger the `play note (60) for (0.5) beats` audio chime.
   - **Nested Exact Discovery:** Directly within the outer block, a nested `if-else` statement enforces a stricter compound condition with a 20-pixel threshold in both dimensions (`treasureX ± 20` and `treasureY ± 20`). If the cursor is positioned directly within this target window, the sprite executes the `say` statement with joined text displaying the exact coordinate values (`Found it! It's at (treasureX, treasureY).`); otherwise, it branches to `else` and displays `think [Nothing...]` to indicate the player is close but has not uncovered the central treasure spot.
 - **If I were to change this condition by replacing the central logical `and` with an `or` operator, the program would run differently** because the proximity sound effect would trigger across wide vertical and horizontal bands stretching entirely across the stage rather than remaining confined to the $120 \times 120$ pixel bounding box around the treasure coordinates.
+
+---
+
+## Peer-graded Assignment: Document Understanding with a Video Explanation (Nested If-Else)
+
+### Snap! Ocean Swimming Age Verification Demonstration
+- **Project:** Nested Conditionals: Ocean Swimming Eligibility (WP_NestedIfElse)
+- **Tool:** Snap! (UC Berkeley)
+- **Video Walkthrough:** https://www.loom.com/share/b2294377cd5542848da562f567f80bf1
+
+#### Program & Concept Description
+This video demonstration explains how hierarchical decision trees and nested conditional branching evaluate multi-criteria dependencies in user interaction:
+- **The purpose of my program is** to operate an interactive decision simulator where a character evaluates whether they are permitted to go swimming in the ocean or must remain on the shore to build a sandcastle, depending on user input and a pseudorandomly assigned age. When the green flag is clicked, the sprite resets its position, assigns a random integer between 5 and 10 to `age`, and prompts the player with `ask [Do you know how to swim? (Y or N)] and wait`.
+- **My code works by using nested if elses in this part to** establish a two-tiered decision tree that gates swim clearance behind skill verification first, followed by age verification:
+  - **Primary Skill Check (Outer `if-else`):** Evaluates `<answer = y>`. If the user inputs anything other than `"y"`, execution immediately branches to the outer `else` block, where the sprite says `"I don't know how to swim, I will build a sand castle."` for 2 seconds and glides to $(50, -20)$ on the beach.
+  - **Secondary Age Check (Inner Nested `if-else`):** If the user confirms they can swim (`answer = y`), execution enters the inner conditional evaluating `<age > 7>`. If `age` is 8, 9, or 10, the sprite says `"Now I am old enough to swim. I will go swimming in the ocean!"` for 2 seconds and glides into the water at $(-50, 30)$. If `age` is 5, 6, or 7, execution diverts to the inner `else` branch, displaying `"I'm not old enough to swim in the ocean by myself!"` for 2 seconds.
+- **If I were to change this condition from `<age > 7>` to `<age > 10>`, the program would run differently** because the character would never be permitted to enter the ocean regardless of the user's answer; since `age` is bounded between 5 and 10, the inner condition would permanently evaluate to false, forcing every user who knows how to swim into the inner `else` branch every time.
