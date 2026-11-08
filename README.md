@@ -126,3 +126,20 @@ This video demonstration highlights how conditional branching and Boolean logic 
   - **Click Collision Evaluation:** Attached to the ball sprite, `when I am clicked` runs three sequential `if` checks using the `touching [color] ?` reporter. If the ball touches red, it changes `score` by `-25` and says `"-25"` for 2 seconds. If touching yellow, it changes `score` by `+25` and says `"+25"`. If touching green, it changes `score` by `+50` and says `"+50"`.
   - **Game-End Outcome Branching:** After the `repeat (10)` glide loop finishes in the green flag script, an `if-else` block checks `<(score) < 0>`. If true, the sprite executes the if-branch and says `"Better luck next time!"` for 2 seconds; if false, it executes the else-branch and says `"Good game!"` for 2 seconds. A subsequent `if` block checks `<(score) > 500>`, saying `"Wow! That's a lot of points!"` for 2 seconds only when that high-score condition is satisfied.
 - **If I were to change these if-else conditions like this** by placing the score evaluation blocks inside the `repeat (10)` loop instead of after it, **the program would run differently** by repeatedly triggering the end-game feedback speech bubbles after every single 3-second glide rather than waiting for all 30 seconds of gameplay to conclude.
+
+---
+
+## Peer-graded Assignment: Document Understanding with a Video Explanation (Compound Conditionals)
+
+### Snap! Buried Treasure Compound Conditionals Demonstration
+- **Project:** Compound Conditionals: Buried Treasure Hunt (WP_CompoundConditionals)
+- **Tool:** Snap! (UC Berkeley)
+- **Video Walkthrough:** https://www.loom.com/share/544ab307b6564020bf59dddff9ded0d2
+
+#### Program & Concept Description
+This video demonstration shows how compound Boolean expressions and nested conditionals create multi-dimensional spatial detection zones in an interactive game environment:
+- **The purpose of my program is** an interactive hot-and-cold treasure hunt game where the player clicks and drags their mouse across the sand to locate a randomly hidden coordinate point. When the green flag is clicked, the sprite resets, introduces the game objectives, and assigns randomized stage coordinates to `treasureX` and `treasureY`. As the player searches, the program provides auditory feedback when the mouse enters the surrounding search zone, and reports the exact hidden coordinates once the player uncovers the precise target area.
+- **My code works by using compound conditionals in this part to** define two-dimensional boundary boxes around the hidden coordinate using logical `and` operators under the `when <mouse down?>` event hat:
+  - **Proximity Bounding Box:** The outer `if` condition verifies that the mouse is horizontally bounded within 60 pixels of `treasureX` (`(treasureX - 60) < mouse x` and `mouse x < (treasureX + 60)`) **and** vertically bounded within 60 pixels of `treasureY` (`(treasureY - 60) < mouse y` and `mouse y < (treasureY + 60)`). All four sub-conditions must be satisfied simultaneously for the block to trigger the `play note (60) for (0.5) beats` audio chime.
+  - **Nested Exact Discovery:** Directly within the outer block, a nested `if-else` statement enforces a stricter compound condition with a 20-pixel threshold in both dimensions (`treasureX ± 20` and `treasureY ± 20`). If the cursor is positioned directly within this target window, the sprite executes the `say` statement with joined text displaying the exact coordinate values (`Found it! It's at (treasureX, treasureY).`); otherwise, it branches to `else` and displays `think [Nothing...]` to indicate the player is close but has not uncovered the central treasure spot.
+- **If I were to change this condition by replacing the central logical `and` with an `or` operator, the program would run differently** because the proximity sound effect would trigger across wide vertical and horizontal bands stretching entirely across the stage rather than remaining confined to the $120 \times 120$ pixel bounding box around the treasure coordinates.
