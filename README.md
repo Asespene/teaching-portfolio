@@ -160,3 +160,21 @@ This video demonstration explains how hierarchical decision trees and nested con
   - **Primary Skill Check (Outer `if-else`):** Evaluates `<answer = y>`. If the user inputs anything other than `"y"`, execution immediately branches to the outer `else` block, where the sprite says `"I don't know how to swim, I will build a sand castle."` for 2 seconds and glides to $(50, -20)$ on the beach.
   - **Secondary Age Check (Inner Nested `if-else`):** If the user confirms they can swim (`answer = y`), execution enters the inner conditional evaluating `<age > 7>`. If `age` is 8, 9, or 10, the sprite says `"Now I am old enough to swim. I will go swimming in the ocean!"` for 2 seconds and glides into the water at $(-50, 30)$. If `age` is 5, 6, or 7, execution diverts to the inner `else` branch, displaying `"I'm not old enough to swim in the ocean by myself!"` for 2 seconds.
 - **If I were to change this condition from `<age > 7>` to `<age > 10>`, the program would run differently** because the character would never be permitted to enter the ocean regardless of the user's answer; since `age` is bounded between 5 and 10, the inner condition would permanently evaluate to false, forcing every user who knows how to swim into the inner `else` branch every time.
+
+---
+
+## Peer-graded Assignment: Document Understanding with a Video Explanation (Abstraction)
+
+### Snap! Procedural Landscape Painting Demonstration
+- **Project:** Abstraction & Parameterized Custom Blocks: Landscape Painting (`paintPicture`)
+- **Tool:** Snap! (UC Berkeley)
+- **Video Walkthrough:** https://www.loom.com/share/a49331a27e3546dcb3d2aadff9ded0d2
+
+#### Program & Concept Description
+This video demonstration explains how procedural abstraction and parameterized custom command blocks decompose complex visual scenes into modular, reusable subroutines[cite: 4, 8, 18]:
+- **The purpose of my program is** to procedurally render a complete outdoor landscape scene—featuring a sky backdrop, a sun with radiating rays, zig-zag grass, and a hexagonal flower—while allowing the canvas to be cleared on demand using the spacebar[cite: 8, 11, 16, 17, 18].
+- **My code works by using abstraction in this part to** organize low-level pen and motion commands into hierarchical custom command blocks that hide implementation complexity[cite: 4, 18]:
+  - **Top-Level Orchestration (`paintPicture`):** Attached directly to `when [green flag] clicked`, `paintPicture` encapsulates the entire rendering pipeline by sequentially invoking `fillSky`, `drawSun`, `drawGrass`, and `drawFlower at x: [-150] y: [-140]`, keeping the main script clean and readable[cite: 8, 18].
+  - **Zero-Parameter Scene Subroutines (`fillSky`, `drawGrass`, `drawSun`):** Each subroutine isolates a distinct visual layer[cite: 4, 8]. `fillSky` sets a cyan pen color and invokes `fill` to flood the background[cite: 10]; `drawGrass` uses a `repeat (50)` loop with `move (30) steps`, `change x by (10)`, and `change y by (30)` at pen size `10` to trace a continuous green border along the bottom of the stage[cite: 12]; and `drawSun` uses pen size `60` with a `repeat (25)` loop (`move (8) steps`, `turn counterclockwise (15) degrees`) to draw a solid yellow disk at $(150, 120)$ before calling five ray subroutines[cite: 13, 16].
+  - **Parameterized Reusable Blocks (`drawSunRay` and `drawFlower`):** Custom inputs eliminate redundant code by generalizing position and orientation[cite: 5, 7, 14]. `drawSunRay at x: [x] y: [y] angle: [angle]` repositions the pen and draws a 50-step ray along any specified heading, allowing `drawSun` to render five distinct rays with different coordinates and angles[cite: 14, 15, 16]. Similarly, `drawFlower at x: [x] y: [y]` navigates to any target coordinate and executes a `repeat (6)` loop (`move (6) steps`, `turn clockwise (60) degrees`) at pen size `8` to draw a six-sided blossom[cite: 5, 17].
+- **If I were to modify this abstraction by** calling `drawFlower at x: [x] y: [y]` multiple times inside `paintPicture` with different coordinate arguments—or adding a `color` input parameter to `drawFlower`—**the program would run differently** by populating the grass with multiple flowers of varying positions and colors without duplicating any underlying polygon-drawing blocks[cite: 5, 8, 17, 18].
